@@ -89,80 +89,80 @@ let students = [
 
 // PW1--1
 
-// for (let i = 0; i < students.length; i++) {
+for (let i = 0; i < students.length; i++) {
 
-//         console.log(
-//             "Name: " + students[i].name + "\nGender " + students[i].gender + "\nCity: "+ students[i].address.city + "\nScore: " + students[i].admissionTestScore
-//             );
+        console.log(
+            "Name: " + students[i].name + "\nGender " + students[i].gender + "\nCity: "+ students[i].address.city + "\nScore: " + students[i].admissionTestScore
+            );
 
-// }
+}
 
 // PW1--2
 
-// for (let i = 0; i < students.length; i++) {
-//     if (students[i].gender === "f") {
-//         console.log(students[i].name);
+for (let i = 0; i < students.length; i++) {
+    if (students[i].gender === "f") {
+        console.log(students[i].name);
 
-//     }
-// }
+    }
+}
 
 // PW1--3
 
-// for (let i = 0; i < students.length; i++) {
-//     if (students[i].gender === "m") {
-//         console.log(students[i].name);
+for (let i = 0; i < students.length; i++) {
+    if (students[i].gender === "m") {
+        console.log(students[i].name);
 
-//     }
-// }
+    }
+}
 
 // PW1--4
-// for (let i = 0; i < students.length; i++) {
-//         if (students[i].admissionTestScore >= 50) {
-//             console.log(students[i].name);
+for (let i = 0; i < students.length; i++) {
+        if (students[i].admissionTestScore >= 50) {
+            console.log(students[i].name);
 
-//         }
-//     }
+        }
+    }
 
 // PW1--5
 
-// for (let i = 0; i < students.length; i++) {
-//         if (students[i].address.city == "Karachi" && students[i].hasInternet == true) {
-//             console.log(students[i].name);
+for (let i = 0; i < students.length; i++) {
+        if (students[i].address.city == "Karachi" && students[i].hasInternet == true) {
+            console.log(students[i].name);
 
-//         }
-//     }
+        }
+    }
 
 // PW1--6
 
-// for (let i = 0; i < students.length; i++) {
-//             console.log(
-//                 students[i].name+"'s Address:\n"+ students[i].address.ilaqa +" in "+ students[i].address.city +", " + students[i].address.country
-//                 );
+for (let i = 0; i < students.length; i++) {
+            console.log(
+                students[i].name+"'s Address:\n"+ students[i].address.ilaqa +" in "+ students[i].address.city +", " + students[i].address.country
+                );
 
-//     }
+    }
 
 // PW1--7
 
-// for (let i = 0; i < students.length; i++) {
-//     if (students[i].phoneNo.charAt(2) == "3") {
-//         console.log(students[i].name);
+for (let i = 0; i < students.length; i++) {
+    if (students[i].phoneNo.charAt(2) == "3") {
+        console.log(students[i].name);
 
-//     }
-// }
+    }
+}
 
 // PW1--8
 
-// for (let i = 0; i < students.length; i++) {
-//     if (students[i].hasJob == true || students[i].hasSchoolBefore == true) {
+for (let i = 0; i < students.length; i++) {
+    if (students[i].hasJob == true || students[i].hasSchoolBefore == true) {
 
-//         console.log("Group A: "+ students[i].name);
+        console.log("Group A: "+ students[i].name);
 
-//     }
-//     else{
-//         console.log("Group B: "+ students[i].name);
+    }
+    else{
+        console.log("Group B: "+ students[i].name);
 
-//     }
-// }
+    }
+}
 // Output
 // Group A: Amna
 // Group A: Hadia
@@ -172,24 +172,23 @@ let students = [
 
 // PW1--9
 
-// for (let i = 0; i < students.length; i++) {
-//     let studentsBirthYear = students[i].dob;
-//     let age =new Date().getFullYear() - new Date(studentsBirthYear).getFullYear();
-    
-//     console.log(students[i].name + "'s Age is " + age + " Years.");
-
-// }
-
-// PW--10
-let biggestAge =0; 
-
 for (let i = 0; i < students.length; i++) {
-    let age =new Date().getFullYear() - new Date(students[i].dob).getFullYear();
-    if( age > biggestAge ) {
-        biggestAge = age;
-
-    }   
-    console.log(biggestAge);
+    let studentsBirthYear = students[i].dob;
+    let age =new Date().getFullYear() - new Date(studentsBirthYear).getFullYear();
+    
+    console.log(students[i].name + "'s Age is " + age + " Years.");
 
 }
 
+// PW--10
+
+let biggestAgeStudentIndex = 0;
+
+for (let i = 0; i < students.length; i++) {
+    let age = new Date().getFullYear() - new Date(students[i].dob).getFullYear();
+    if (age > biggestAgeStudentIndex) {
+        biggestAgeStudentIndex = i;
+    }
+
+}
+console.log(students[biggestAgeStudentIndex].name);
