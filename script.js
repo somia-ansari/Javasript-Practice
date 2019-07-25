@@ -1,3 +1,4 @@
+
 let students = [
     {
         name: "Amna",
@@ -87,17 +88,22 @@ let students = [
 ];
 
 
-// PW1--1
+console.log("PW1--1 Print each student in this format:");
 
 for (let i = 0; i < students.length; i++) {
-
-        console.log(
-            "Name: " + students[i].name + "\nGender " + students[i].gender + "\nCity: "+ students[i].address.city + "\nScore: " + students[i].admissionTestScore
-            );
-
+if(students[i].gender === "f"){
+    console.log(
+        "Name: " + students[i].name + "\nGender: Female " + "\nCity: " + students[i].address.city + "\nScore: " + students[i].admissionTestScore
+    );
+} else{
+    console.log(
+        "Name: " + students[i].name + "\nGender: Male " + "\nCity: " + students[i].address.city + "\nScore: " + students[i].admissionTestScore
+    );
+}
+    
 }
 
-// PW1--2
+console.log("PW1--2 Print names of female students only.");
 
 for (let i = 0; i < students.length; i++) {
     if (students[i].gender === "f") {
@@ -106,7 +112,7 @@ for (let i = 0; i < students.length; i++) {
     }
 }
 
-// PW1--3
+console.log("PW1--3 Print names of male students only.");
 
 for (let i = 0; i < students.length; i++) {
     if (students[i].gender === "m") {
@@ -114,34 +120,34 @@ for (let i = 0; i < students.length; i++) {
 
     }
 }
-
-// PW1--4
-for (let i = 0; i < students.length; i++) {
-        if (students[i].admissionTestScore >= 50) {
-            console.log(students[i].name);
-
-        }
-    }
-
-// PW1--5
+console.log("PW1--4 Print names of students who have passed the admission test. Passing marks are 50.");
 
 for (let i = 0; i < students.length; i++) {
-        if (students[i].address.city == "Karachi" && students[i].hasInternet == true) {
-            console.log(students[i].name);
+    if (students[i].admissionTestScore >= 50) {
+        console.log(students[i].name);
 
-        }
     }
+}
 
-// PW1--6
+console.log("PW1--5 Print names of eligible students only (students who have internet and live in Karachi are eligible)");
 
 for (let i = 0; i < students.length; i++) {
-            console.log(
-                students[i].name+"'s Address:\n"+ students[i].address.ilaqa +" in "+ students[i].address.city +", " + students[i].address.country
-                );
+    if (students[i].address.city == "Karachi" && students[i].hasInternet == true) {
+        console.log(students[i].name);
 
     }
+}
 
-// PW1--7
+console.log("PW1--6 Print address of each student in this format:");
+
+for (let i = 0; i < students.length; i++) {
+    console.log(
+        students[i].name + "'s Address:\n" + students[i].address.ilaqa + " in " + students[i].address.city + ", " + students[i].address.country
+    );
+
+}
+
+console.log("PW1--7 Print names and phone number of students who have Ufone.");
 
 for (let i = 0; i < students.length; i++) {
     if (students[i].phoneNo.charAt(2) == "3") {
@@ -149,46 +155,51 @@ for (let i = 0; i < students.length; i++) {
 
     }
 }
+console.log("PW1--8 Students who have a job or a class are placed in Group B.\n Print the names of students in Group A, and in Group B, in the below format:");
 
-// PW1--8
-
+let groupA = [];
+let groupB = [];
 for (let i = 0; i < students.length; i++) {
     if (students[i].hasJob == true || students[i].hasSchoolBefore == true) {
-
-        console.log("Group A: "+ students[i].name);
-
+        groupA.push(students[i].name);
     }
-    else{
-        console.log("Group B: "+ students[i].name);
-
+    else {
+        groupB.push(students[i].name);
     }
 }
-// Output
-// Group A: Amna
-// Group A: Hadia
-// Group B: Ahmed
-// Group B: Fariha
-// Group A: Abdullah
+console.log("Group A: " + groupA);
+console.log("Group B: " + groupB);
 
-// PW1--9
+console.log("PW1--9 Print age of each student in the below format:");
 
 for (let i = 0; i < students.length; i++) {
     let studentsBirthYear = students[i].dob;
-    let age =new Date().getFullYear() - new Date(studentsBirthYear).getFullYear();
-    
+    let age = new Date().getFullYear() - new Date(studentsBirthYear).getFullYear();
+
     console.log(students[i].name + "'s Age is " + age + " Years.");
 
 }
 
-// PW--10
+console.log("PW--10 Print the name of the oldest student");
 
-let biggestAgeStudentIndex = 0;
+// let biggestAgeStudentIndex = 0;
 
+// for (let i = 0; i < students.length; i++) {
+//     let age = new Date().getFullYear() - new Date(students[i].dob).getFullYear();
+//     if (age > biggestAgeStudentIndex) {
+//         biggestAgeStudentIndex = i;
+//     }
+// }
+// console.log(students[biggestAgeStudentIndex].name);
+
+
+let biggest = 0;
+let studentIndex;
 for (let i = 0; i < students.length; i++) {
     let age = new Date().getFullYear() - new Date(students[i].dob).getFullYear();
-    if (age > biggestAgeStudentIndex) {
-        biggestAgeStudentIndex = i;
+    if (age > biggest) {
+        biggest = age;
+        studentIndex = i;
     }
-
 }
-console.log(students[biggestAgeStudentIndex].name);
+console.log(students[studentIndex].name);
