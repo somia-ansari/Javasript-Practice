@@ -91,16 +91,16 @@ let students = [
 console.log("PW1--1 Print each student in this format:");
 
 for (let i = 0; i < students.length; i++) {
-if(students[i].gender === "f"){
-    console.log(
-        "Name: " + students[i].name + "\nGender: Female " + "\nCity: " + students[i].address.city + "\nScore: " + students[i].admissionTestScore
-    );
-} else{
-    console.log(
-        "Name: " + students[i].name + "\nGender: Male " + "\nCity: " + students[i].address.city + "\nScore: " + students[i].admissionTestScore
-    );
-}
-    
+    if (students[i].gender === "f") {
+        console.log(
+            "Name: " + students[i].name + "\nGender: Female " + "\nCity: " + students[i].address.city + "\nScore: " + students[i].admissionTestScore
+        );
+    } else {
+        console.log(
+            "Name: " + students[i].name + "\nGender: Male " + "\nCity: " + students[i].address.city + "\nScore: " + students[i].admissionTestScore
+        );
+    }
+
 }
 
 console.log("PW1--2 Print names of female students only.");
@@ -152,7 +152,7 @@ console.log("PW1--7 Print names and phone number of students who have Ufone.");
 for (let i = 0; i < students.length; i++) {
     if (students[i].phoneNo.charAt(2) == "3") {
         console.log(students[i].name);
-        console.log("Number: "+students[i].phoneNo);
+        console.log("Number: " + students[i].phoneNo);
 
     }
 }
@@ -204,6 +204,9 @@ for (let i = 0; i < students.length; i++) {
     }
 }
 console.log(students[studentIndex].name);
+
+// PW 2
+
 let videos = [
     {
         title: "Photoshop tutorial",
@@ -296,7 +299,7 @@ let videos = [
     },
     {
         title: "VS Code Can Do That?! VS Code Tips and Tricks",
-        lengthInMinutes: 48,
+        lengthInMinutes: 2.7,
         category: "Education",
         uploadDate: new Date("11-10-2019"),
         tags: "VS Code, loops, web development",
@@ -363,7 +366,7 @@ for (let i = 0; i < videos.length; i++) {
         videos[i].category +
         "\nViews: " +
         videos[i].viewCount.toLocaleString() +
-        "\n"+
+        "\n" +
         fullDate.getDate() +
         "-" + months[fullDate.getMonth()] +
         "-" + fullDate.getFullYear() +
@@ -375,6 +378,27 @@ for (let i = 0; i < videos.length; i++) {
 console.log("PW2--2 Print titles of all short ( less than 3 minutes ) videos.");
 
 for (let i = 0; i < videos.length; i++) {
-    
+    if (videos[i].lengthInMinutes < 3) {
+        console.log(videos[i].title);
+    }
 
 }
+
+console.log("PW2--3 Print titles of all long ( greater than 20 minutes ) videos.");
+
+for (let i = 0; i < videos.length; i++) {
+    if (videos[i].lengthInMinutes > 20) {
+        console.log(videos[i].title);
+    }
+
+}
+
+console.log("PW2--4 Print titles of all medium length videos.");
+
+for (let i = 0; i < videos.length; i++) {
+    if (videos[i].lengthInMinutes > 4 && videos[i].lengthInMinutes < 20) {
+        console.log(videos[i].title);
+    }
+
+}
+
