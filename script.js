@@ -1,6 +1,4 @@
-
-let students = [
-    {
+let students = [{
         name: "Amna",
         gender: "f",
         dob: new Date("02-04-1990"),
@@ -163,8 +161,7 @@ let groupB = [];
 for (let i = 0; i < students.length; i++) {
     if (students[i].hasJob == true || students[i].hasSchoolBefore == true) {
         groupA.push(students[i].name);
-    }
-    else {
+    } else {
         groupB.push(students[i].name);
     }
 }
@@ -176,6 +173,13 @@ console.log("PW1--9 Print age of each student in the below format:");
 for (let i = 0; i < students.length; i++) {
     let studentsBirthYear = students[i].dob;
     let age = new Date().getFullYear() - new Date(studentsBirthYear).getFullYear();
+    if (new Date(studentsBirthYear).getMonth() < new Date().getMonth()) {
+        age--;
+    } else if (new Date(studentsBirthYear).getMonth() === new Date().getMonth()) {
+        if (new Date(studentsBirthYear).getDate() > new Date().getDate()) {
+            age--;
+        }
+    }
 
     console.log(students[i].name + "'s Age is " + age + " Years.");
 
@@ -207,8 +211,7 @@ console.log(students[studentIndex].name);
 
 // PW 2
 
-let videos = [
-    {
+let videos = [{
         title: "Photoshop tutorial",
         lengthInMinutes: 70,
         category: "Education",
@@ -291,7 +294,7 @@ let videos = [
         title: "Using Git with VS Code and Github",
         lengthInMinutes: 60,
         category: "Education",
-        uploadDate: new Date("11-10-1998"),
+        uploadDate: new Date("07-25-2019"),
         tags: "vsCode, git, web development",
         features: ["Purchased", "HD"],
         viewCount: 9004,
@@ -401,4 +404,127 @@ for (let i = 0; i < videos.length; i++) {
     }
 
 }
+console.log("PW2--5 Print titles of the longest video");
 
+let maxLength = 0;
+let longestVideo;
+
+
+for (let i = 0; i < videos.length; i++) {
+    if (maxLength < videos[i].lengthInMinutes) {
+        maxLength = videos[i].lengthInMinutes;
+        longestVideo = videos[i].title;
+    }
+}
+console.log(longestVideo + " is the longest video i.e. of " + maxLength + " minutes.");
+console.log("PW2--5 with for each Loop");
+
+videos.forEach(fiveFunction)
+
+function fiveFunction(item, index, arr) {
+    if (maxLength < videos[index].lengthInMinutes) {
+        maxLength = videos[index].lengthInMinutes;
+        longestVideo = videos[index].title;
+    }
+}
+console.log(longestVideo + " is the longest video i.e. of " + maxLength + " minutes.");
+console.log("PW2--6 Print titles of all 'Educational' videos");
+
+videos.forEach(sixFunction)
+
+function sixFunction(item, index, arr) {
+    if (videos[index].category === "Education") {
+        console.log(videos[index].title);
+    }
+}
+console.log("PW2--7 Print titles of all videos with tag 'Javascript'");
+
+videos.forEach(sevenFunction)
+
+function sevenFunction(item, index, arr) {
+    let arrOfTags = videos[index].tags.split(", ");
+    for (let i = 0; i < arrOfTags.length; i++) {
+        if (arrOfTags[i] === "javascript") {
+            console.log(videos[index].title);
+        }
+    }
+
+}
+console.log("PW2--8 Print titles of all videos with HD feature");
+
+videos.forEach(eightFunction)
+
+function eightFunction(item, index, arr) {
+    for (let i = 0; i < videos[index].features.length; i++) {
+        if (videos[index].features[i] === "HD") {
+            console.log(videos[index].title);
+        }
+    }
+}
+console.log("PW2--9 Print titles of all videos uploaded today");
+let videoDate;
+let videoMonth;
+let videoYear;
+let thisMonth = new Date().getMonth();
+let thisYear = new Date().getFullYear();
+let today = new Date().getDate();
+
+videos.forEach(nineFunction)
+
+function nineFunction(item, index, arr) {
+    videoDate = videos[index].uploadDate.getDate();
+    videoMonth = videos[index].uploadDate.getMonth();
+    videoYear = videos[index].uploadDate.getFullYear();
+    if (today == videoDate && thisMonth == videoMonth && thisYear == videoYear) {
+        console.log(videos[index].title);
+    }
+}
+console.log("PW2--10 Print titles of all videos uploaded this week");
+videos.forEach(tenFunction)
+
+function tenFunction(item, index, arr) {
+    videoDate = videos[index].uploadDate.getDate();
+    videoMonth = videos[index].uploadDate.getMonth();
+    videoYear = videos[index].uploadDate.getFullYear();
+    if (thisMonth == videoMonth && thisYear == videoYear) {
+        if (today == videoDate || today - 2 == videoDate || today - 3 == videoDate || today - 4 == videoDate || today - 5 == videoDate || today - 6 == videoDate) {
+            console.log(videos[index].title);
+        }
+    }
+}
+console.log("PW2--11 Print titles of all videos uploaded this month");
+videos.forEach(elevenFunction)
+
+function elevenFunction(item, index, arr) {
+    videoDate = videos[index].uploadDate.getDate();
+    videoMonth = videos[index].uploadDate.getMonth();
+    videoYear = videos[index].uploadDate.getFullYear();
+    if (thisMonth == videoMonth && thisYear == videoYear) {
+        console.log(videos[index].title);
+    }
+}
+console.log("PW2--12 Print titles of all videos uploaded this year");
+videos.forEach(twelveFunction)
+
+function twelveFunction(item, index, arr) {
+    videoDate = videos[index].uploadDate.getDate();
+    videoMonth = videos[index].uploadDate.getMonth();
+    videoYear = videos[index].uploadDate.getFullYear();
+    if (thisYear == videoYear) {
+        console.log(videos[index].title);
+    }
+}
+console.log("PW2--13 Sort the array in ascending order of number of views and print the titles");
+
+let list = videos.sort(function(a, b) { return a.lengthInMinutes - b.lengthInMinutes });
+for (let i = 0; i < list.length; i++) {
+    console.log(list[i].title);
+}
+console.log("PW2--14 Sort the array in ascending order of rating and print the titles");
+let ratingList = videos.sort(function(a, b) { return a.rating - b.rating });
+ratingList.forEach(forteenFunction)
+
+function forteenFunction(item, index, arr) {
+    console.log(ratingList[index].title);
+
+}
